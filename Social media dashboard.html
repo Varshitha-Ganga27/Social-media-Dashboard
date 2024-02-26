@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("https://t3.ftcdn.net/jpg/03/89/32/80/360_F_389328016_ak3iUrk15slWfEZdYL96O6eKTUyImDeC.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+        text-align: center; /* Align content to center */
+    }
+    h1, h2 {
+        text-align: center;
+    }
+    .login-form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        display: none; /* Hide login form by default */
+    }
+    .dashboard {
+        display: none;
+    }
+    .social-feed {
+        margin-top: 20px;
+    }
+    .social-feed-item {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .social-media-buttons {
+        text-align: center; /* Align buttons to center */
+    }
+    .social-media-button {
+        background-color: #3b5998; /* Facebook color */
+        color: #fff;
+        padding: 10px;
+        margin: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Social Media Dashboard</h1>
+    <div id="signup" style="display: block;">
+        <p>If you don't have an account, <a href="#" onclick="showLoginForm()">sign up</a> now!</p>
+    </div>
+    <div class="login-form" id="loginForm">
+        <h2>Login</h2>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required><br><br>
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
+    <div class="dashboard" id="dashboard">
+        <h2>Welcome, <span id="loggedInUser"></span>!</h2>
+        <div class="social-feed">
+            <!-- Social media feed content will be dynamically added here -->
+        </div>
+    </div>
+    <div class="social-media-buttons">
+        <button class="social-media-button" onclick="openLink('facebook')">Facebook</button>
+        <button class="social-media-button" onclick="openLink('instagram')">Instagram</button>
+        <button class="social-media-button" onclick="openLink('twitter')">Twitter</button>
+        <button class="social-media-button" onclick="openLink('linkedin')">LinkedIn</button>
+        <button class="social-media-button" onclick="openLink('snapchat')">Snapchat</button>
+        <button class="social-media-button" onclick="openLink('pinterest')">Pinterest</button>
+        <button class="social-media-button" onclick="openLink('whatsapp')">WhatsApp</button>
+    </div>
+</div>
+
+<script>
+    function showLoginForm() {
+        document.getElementById('signup').style.display = 'none'; // Hide signup section
+        document.getElementById('loginForm').style.display = 'block'; // Show login form
+    }
+
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Perform authentication (you should replace this with actual authentication logic)
+        if (username && password) {
+            document.getElementById('signup').style.display = 'none'; // Hide signup section
+            document.getElementById('loginForm').style.display = 'none'; // Hide login form
+            document.getElementById('dashboard').style.display = 'block'; // Show dashboard
+            document.getElementById('loggedInUser').textContent = username; // Update logged in user
+            // You can integrate API calls here to fetch actual social media content
+            // Once user is logged in, you can fetch social media feeds dynamically
+        } else {
+            alert('Please enter valid username and password.');
+        }
+    }
+
+    function openLink(platform) {
+        let link;
+        switch (platform) {
+            case 'facebook':
+                link = 'https://www.facebook.com/';
+                break;
+            case 'instagram':
+                link = 'https://www.instagram.com/';
+                break;
+            case 'twitter':
+                link = 'https://twitter.com/';
+                break;
+            case 'linkedin':
+                link = 'https://www.linkedin.com/';
+                break;
+            case 'snapchat':
+                link = 'https://www.snapchat.com/';
+                break;
+            case 'pinterest':
+                link = 'https://www.pinterest.com/';
+                break;
+            case 'whatsapp':
+                link = 'https://web.whatsapp.com/';
+                break;
+            default:
+                return;
+        }
+        window.open(link, '_blank');
+    }
+</script>
+</body>
+</html>
